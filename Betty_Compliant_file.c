@@ -1,5 +1,5 @@
 /**
- * main - betty standards
+ * main - betty standard
  * Return: 0
  */
 
