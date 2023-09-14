@@ -9,12 +9,12 @@
 #include<stdbool.h>
 
 /**
- * _printf - Custom function to print text
+ * mjsh_main - header files and prototypes
  * @text: The text to be printed
 */
 
 void _printf(const char *text);
 void prompt(void);
-void instraction_reader (char *text, size_t length);
+void instraction_reader(char *text, size_t length);
 
 #endif
