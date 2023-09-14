@@ -15,8 +15,7 @@ int main (void)
             break;
         }
         text[strcspn(text, "\n")] = '\0';
-        
-        void instraction_reader(char *text, size_t length);
+        void instraction_reader(void);
         void execution(const char *text);
     }
 
