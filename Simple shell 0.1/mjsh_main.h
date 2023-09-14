@@ -7,6 +7,8 @@
 #include<string.h>
 #include<unistd.h>
 #include<stdbool.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 /**
  * mjsh_main - header files and prototypes
