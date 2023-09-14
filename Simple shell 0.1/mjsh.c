@@ -11,7 +11,7 @@ int main (void)
         void prompt(void);
         if (fgets(text, sizeof(text), stdin) == NULL)
         {
-            printf("EXIT\n");
+            _printf("EXIT\n");
             break;
         }
         text[strcspn(text, "\n")] = '\0';
