@@ -6,20 +6,21 @@
  * @length: the length of the input
 */
 
-void instraction_reader(char *text, size_t length)
+void instraction_reader(void)
 {
-    size_t text_length;
-
-    if (fgets(text, length, stdin) == NULL)
+    char *trimmed_text = text;
+    while (isspace(*trimmed_command)) 
     {
-        perror("Error reading input");
-        exit(EXIT_FAILURE);
+        trimmed_command++;
     }
-
-    text_length = strlen(text);
-
-    if (text_length > 0 && text[text_length - 1] == '\n')
+    size_t text_lengh = strlen(trimmed_command);
+    
+    while (text_length > 0 && isspace(trimmed_command[text_length - 1])) 
     {
-        text[text_length - 1] = '\0';
+        trimmed_command[--text_length] = '\0';
+    }
+    if (strlen(trimmed_command) == 0) 
+    {
+        continue;
     }
 }
