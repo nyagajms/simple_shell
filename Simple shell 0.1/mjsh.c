@@ -9,6 +9,11 @@ int main (void)
     for (;;)
     {
         void prompt(void);
+        if (fgets(command, sizeof(command), stdin) == NULL) 
+        {
+            printf("EXIT\n");
+            break;
+        }
         void instraction_reader(char *text, size_t length);
         void execution(const char *text);
     }
