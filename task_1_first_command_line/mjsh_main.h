@@ -10,8 +10,6 @@
 /**
  * _printf - Custom function to print text
  * @text: The text to be printed
- *
- * Description: This function prints the specified text to the standard output.
 */
 
 void _printf(const char *text);
