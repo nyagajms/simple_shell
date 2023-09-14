@@ -14,5 +14,6 @@
 */
 
 void _printf(const char *text);
+void prompt(void);
 
 #endif
