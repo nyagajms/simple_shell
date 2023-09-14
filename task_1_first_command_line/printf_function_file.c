@@ -6,5 +6,5 @@
 */
 void _printf(const char *text)
 {
-	write(STDOUT_FILENO, text, strlen(text));
+	write(1, text, strlen(text));
 }
