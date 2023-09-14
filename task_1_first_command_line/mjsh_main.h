@@ -16,5 +16,6 @@
 void _printf(const char *text);
 void prompt(void);
 void instraction_reader(char *text, size_t length);
+void execution(const char *text);
 
 #endif

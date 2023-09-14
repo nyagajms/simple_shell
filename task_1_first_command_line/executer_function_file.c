@@ -7,6 +7,7 @@
 void execution(const char *text)
 {
 	__pid_t second_pid = fork();
+
 	if (second_pid == -1)
 	{
 		perror("fork");
@@ -14,13 +15,13 @@ void execution(const char *text)
 	}
 	else if (second_pid == 0)
 	{
-		execve(text,text,(char *)NULL);
-		perror("execve");
-		exit(EXIT_FAILURE);		
+		execlp(text, text, (char *)NULL);
+		perror("execlp");
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
 		wait(NULL);
 	}
-	
+
 }
