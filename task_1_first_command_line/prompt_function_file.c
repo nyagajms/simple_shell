@@ -6,7 +6,6 @@
 
 void prompt(void)
 {
-	for (;;)
 	{
 		_printf("┌──moreen@james: \n └─$");
 	}
