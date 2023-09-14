@@ -1,11 +1,19 @@
 #ifndef MJSH_MAIN_H
-#define MJ_MAIN_H
+#define MJSH_MAIN_H
+
 
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 #include<unistd.h>
 
-void _printf(const char *massage);
+/**
+ * _printf - Custom function to print text
+ * @text: The text to be printed
+ *
+ * Description: This function prints the specified text to the standard output.
+*/
+
+void _printf(const char *text);
 
 #endif
