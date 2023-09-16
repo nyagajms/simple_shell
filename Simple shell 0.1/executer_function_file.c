@@ -7,7 +7,7 @@ void execution(char *trimmed_text, char *envp[])
 
     if (child_pid == -1)
     {
-        perror("Fork failed");
+        perror("child process failed to be created");
         exit(1);
     }
 
