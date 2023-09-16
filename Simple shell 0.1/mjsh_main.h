@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 #include <ctype.h>
 #include<stdbool.h>
+#include <stdarg.h>
 #include <sys/types.h>
 
 /**
@@ -16,7 +17,7 @@
  * @text: The text to be printed
 */
 
-void _printf(const char *text);
+int _printf(const char *text, ...);
 void prompt(void);
 void instraction_reader(void);
 void execution(char *trimmed_text, char *envp[]);
