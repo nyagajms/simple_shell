@@ -6,5 +6,5 @@
 
 void prompt(void)
 {
-	_printf("┌──moreen@james\n└─$ ");
+	_printf("┌──moreen@james\n└─$");
 }

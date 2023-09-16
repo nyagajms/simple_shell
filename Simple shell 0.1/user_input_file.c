@@ -34,5 +34,11 @@ void instraction_reader(void)
         trimmed_text[--text_length] = '\0';
     }
 
+    if (trimmed_text[0] == '\0')
+    {
+        return;
+    }
+
+
     execution(trimmed_text, envp);
 }
