@@ -1,13 +1,8 @@
-#include "mjsh_main.h"
+#include"mjsh_main.h"
 
 void execution(char *trimmed_text, char *envp[])
 {
-    pid_t child_pid;
-    char *args[2];
-    char full_path[256];
-    int status;
-
-    child_pid = fork();
+    pid_t child_pid = fork();
 
     if (child_pid == -1)
     {
@@ -17,21 +12,11 @@ void execution(char *trimmed_text, char *envp[])
 
     if (child_pid == 0)
     {
+        char *args[2];
         args[0] = trimmed_text;
         args[1] = NULL;
 
-
-        snprintf(full_path, sizeof(full_path), "/bin/%s", trimmed_text);
-
-        if (access(full_path, X_OK) == -1)
-        {
-            perror("Access error");
-            exit(1);
-        }
-
-        printf("Executing: %s\n", full_path);
-
-        if (execve(full_path, args, envp) == -1)
+        if (execve(trimmed_text, args, envp) == -1)
         {
             perror("Execve failed");
             exit(1);
@@ -39,6 +24,7 @@ void execution(char *trimmed_text, char *envp[])
     }
     else
     {
+        int status;
         waitpid(child_pid, &status, 0);
 
         if (WIFEXITED(status))
