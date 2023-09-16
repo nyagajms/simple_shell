@@ -8,15 +8,8 @@ int main (void)
 {
     for (;;)
     {
-        void prompt(void);
-        if (fgets(text, sizeof(text), stdin) == NULL)
-        {
-            _printf("EXIT\n");
-            break;
-        }
-        text[strcspn(text, "\n")] = '\0';
-        void instraction_reader(void);
-        void execution(const char *text);
+        prompt();
+        instraction_reader();
     }
 
     return (0);

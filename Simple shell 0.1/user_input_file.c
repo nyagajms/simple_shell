@@ -2,25 +2,37 @@
 
 /**
  * instraction_reader - reades the user input command
- * @text: the command being input
- * @length: the length of the input
+ * @text_command: the command being input
 */
 
+void execution(char *trimmed_text, char *envp[]);
 void instraction_reader(void)
 {
-    char *trimmed_text = text;
-    while (isspace(*trimmed_command)) 
+    char text_command[100];
+    char *trimmed_text;
+    char *envp[1];
+    size_t text_length;
+
+    if (fgets(text_command, sizeof(text_command), stdin) == NULL)
     {
-        trimmed_command++;
+        perror("EXIT");
+        exit(1);
     }
-    size_t text_lengh = strlen(trimmed_command);
-    
-    while (text_length > 0 && isspace(trimmed_command[text_length - 1])) 
+    text_command[strcspn(text_command, "\n")] = '\0';
+
+    trimmed_text = text_command;
+
+    while (isspace(*trimmed_text))
     {
-        trimmed_command[--text_length] = '\0';
+        trimmed_text++;
     }
-    if (strlen(trimmed_command) == 0) 
+
+    text_length = strlen(trimmed_text);
+
+    while (text_length > 0 && isspace(trimmed_text[text_length - 1]))
     {
-        continue;
+        trimmed_text[--text_length] = '\0';
     }
+
+    execution(trimmed_text, envp);
 }

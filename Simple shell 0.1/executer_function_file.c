@@ -1,41 +1,57 @@
-#include"mjsh_main.h"
+#include "mjsh_main.h"
 
-void execution(const char *text)
+void execution(char *trimmed_text, char *envp[])
 {
-    pid_t second_pid = fork();
+    pid_t child_pid;
+    char *args[2];
+    char full_path[256];
+    int status;
 
-    if (second_pid == -1)
+    child_pid = fork();
+
+    if (child_pid == -1)
     {
-        perror("Error in fork");
-        exit(EXIT_FAILURE);
+        perror("Fork failed");
+        exit(1);
     }
-    else if (second_pid == 0)
+
+    if (child_pid == 0)
     {
-        if (execlp(text, text, (char *)NULL) == -1)
+        args[0] = trimmed_text;
+        args[1] = NULL;
+
+
+        snprintf(full_path, sizeof(full_path), "/bin/%s", trimmed_text);
+
+        if (access(full_path, X_OK) == -1)
         {
-            perror("Error in execlp");
-            exit(EXIT_FAILURE);
+            perror("Access error");
+            exit(1);
+        }
+
+        printf("Executing: %s\n", full_path);
+
+        if (execve(full_path, args, envp) == -1)
+        {
+            perror("Execve failed");
+            exit(1);
         }
     }
     else
     {
-        int status;
-        if (wait(&status) == -1)
-        {
-            perror("Error in wait");
-            exit(EXIT_FAILURE);
-        }
-        
+        waitpid(child_pid, &status, 0);
+
         if (WIFEXITED(status))
         {
-            int exit_status = WEXITSTATUS(status);
-            if (exit_status == 0)
-            {
-                printf("Command '%s' executed successfully\n", text);
-            }
-            else
-            {
-            }
+            printf("Command exited with status %d\n", WEXITSTATUS(status));
+        }
+        else if (WIFSIGNALED(status))
+        {
+            printf("Command terminated by signal %d\n", WTERMSIG(status));
+        }
+        else
+        {
+            printf("Command ended abnormally\n");
         }
     }
 }

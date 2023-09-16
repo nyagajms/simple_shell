@@ -7,6 +7,7 @@
 #include<string.h>
 #include<unistd.h>
 #include <sys/wait.h>
+#include <ctype.h>
 #include<stdbool.h>
 #include <sys/types.h>
 
@@ -17,7 +18,7 @@
 
 void _printf(const char *text);
 void prompt(void);
-void instraction_reader(void)
-void execution(const char *text);
+void instraction_reader(void);
+void execution(char *trimmed_text, char *envp[]);
 
 #endif
