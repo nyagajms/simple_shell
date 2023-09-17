@@ -17,7 +17,7 @@
  * @text: The text to be printed
 */
 
-int _printf(const char *text, ...);
+void _printf(const char *text, ...);
 void prompt(void);
 void instraction_reader(void);
 void execution(char *trimmed_text, char *envp[]);
