@@ -7,7 +7,6 @@
 
 void _printf(const char *text, ...) 
 {
-	int result;
     va_list args;
     va_start(args, text);
     vprintf(text, args);
