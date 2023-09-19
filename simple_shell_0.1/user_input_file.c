@@ -2,7 +2,12 @@
 
 /**
  * instraction_reader - reades the user input command
+ * it trims leading whitespace from the input command and handles cases where
+ * the input command is empty.
+ * the trimmed command is then pased to the 'execution' function for execution
+ *
  * @text_command: the command being input
+ * the input command read from stdin
 */
 
 void execution(char *trimmed_text, char *envp[]);

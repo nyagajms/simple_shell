@@ -1,7 +1,11 @@
 #include"mjsh_main.h"
 
 /**
- * instraction_reader - reades the user input command
+ * instraction_reader - reades and process the user input command
+ * it trims leading and traling white spaces and handles cases of empty
+ * command in input.
+ * the trimmed command is prepared for execution
+ *
  * @text_command: the command being input
 */
 

@@ -1,5 +1,17 @@
 #include"mjsh_main.h"
-
+/**
+ * this is a function for executing a command specified by 'triimmed_text' with the given enviromnent variables
+ * it creats a child process using fork()
+ * it checks if fork() failed to create a child process
+ * code to be executed by the child process
+ * prepares argument for execve() system call
+ * the command to be executed
+ * null-terminated argument list
+ * it executes the specific command with given arguments and environment variables
+ * prints an error message if execve() fails
+ * exits the child process with an error code
+ * code code to be executed by the parent process waits for the child to finish
+ */
 void execution(char *trimmed_text, char *envp[])
 {
 
