@@ -6,8 +6,9 @@ void envShell()
 
     char **env = environ;
 
-    while (*env != NULL) {
-        printf("%s\n", *env);
+    while (*env != NULL) 
+    {
+        _printf("%s\n", *env);
         env++;
     }
 }
