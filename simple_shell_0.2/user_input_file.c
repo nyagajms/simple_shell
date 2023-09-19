@@ -1,7 +1,10 @@
 #include"mjsh_main.h"
 
 /**
- * instraction_reader - reades the user input command
+ * instraction_reader - reades the user input command from the standard input (stdin)
+ * trims leading and tralinf whitespaces and handles empty imputs.
+ * the trimmed command is executed
+ *
  * @text_command: the command being input
 */
 
