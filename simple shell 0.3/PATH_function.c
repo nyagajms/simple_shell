@@ -38,7 +38,11 @@ void checkCommandInPath(char *trimmed_text, char *envp[])
 
                     exec_args[0] = trimmed_text;
                     exec_args[1] = NULL;
+                    char *args[10];
+                    int arg_count;
 
+                    tokenizeInput(trimmed_text, args, &arg_count);
+                    
                     if (execve(full_path, exec_args, envp) == -1) 
                     {
                         perror("");

@@ -27,4 +27,3 @@ void execution(char *trimmed_text, char *envp[])
     else
     wait(NULL);
 }
- 
