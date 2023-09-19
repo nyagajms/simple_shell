@@ -24,4 +24,6 @@ void execution(char *trimmed_text, char *envp[]);
 void tokenizeInput(char *input, char *args[], int *arg_count);
 void checkCommandInPath(char *trimmed_text, char *envp[]);
 void exitShell();
+void envShell();
+
 #endif

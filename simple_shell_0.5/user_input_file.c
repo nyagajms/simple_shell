@@ -24,6 +24,10 @@ void instraction_reader(void)
     {
         exitShell();
     }
+    if (strcmp(text_command, "env") == 0) 
+    {
+        envShell();
+    }
 
     trimmed_text = text_command;
 
