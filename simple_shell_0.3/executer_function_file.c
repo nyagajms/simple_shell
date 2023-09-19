@@ -9,7 +9,7 @@ void execution(char *trimmed_text, char *envp[])
     {
         perror("child process failed to be created");
         exit(1);
-    }
+    } 
 
     if (child_pid == 0)
     {

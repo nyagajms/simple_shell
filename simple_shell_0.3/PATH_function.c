@@ -8,7 +8,8 @@ void checkCommandInPath(char *trimmed_text, char *envp[])
         char *dir;
         char path_copy[1024];
         int found = 0;
-
+        char *args[10];
+        int arg_count;
         if (path == NULL) 
         {
             perror("There is no PATH environment variable set");
@@ -38,8 +39,7 @@ void checkCommandInPath(char *trimmed_text, char *envp[])
 
                     exec_args[0] = trimmed_text;
                     exec_args[1] = NULL;
-                    char *args[10];
-                    int arg_count;
+
 
                     tokenizeInput(trimmed_text, args, &arg_count);
                     
