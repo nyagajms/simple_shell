@@ -1,11 +1,4 @@
 #include "mjsh_main.h"
-/**
- * checkCommandInPath - serach for and execute command in the system's PATH.
- * This function checks whether the given 'trimmed_text' represents an absolute or relative
- * path to an executable file.
- *if not it seraches for the command in the listed directories in the PATH environment variables.
- *if a matching executable is found it is executed as a child process.
- */
 
 void checkCommandInPath(char *trimmed_text, char *envp[])
 {

@@ -1,12 +1,5 @@
 #include"mjsh_main.h"
-/**
- * execution- execute a command specified bt 'trimmed_text' with given environment variables
- * this function creates a child process using fork()
- * it handles eerrors related to the process creation and command execution
- *
- * @trimmed_text: the command to be executed with leading and traling whitespace trimmed.
- * @envp: the array of environment variables to pass to the executed command
- */
+
 void execution(char *trimmed_text, char *envp[])
 {
 
