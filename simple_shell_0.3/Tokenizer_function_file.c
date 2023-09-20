@@ -22,3 +22,4 @@ void tokenizeInput(char *trimmed_text, char *args[], int *arg_count)
     args[*arg_count] = NULL;
 
 }
+ 

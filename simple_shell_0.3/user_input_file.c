@@ -10,7 +10,7 @@
 */
 
 void execution(char *trimmed_text, char *envp[]);
-void checkCommandInPath(char *trimmed_text, char *envp[]);
+void checkCommandInPath(char *command_line);
 void instraction_reader(void)
 {
     char text_command[100];
@@ -42,14 +42,15 @@ void instraction_reader(void)
     if (trimmed_text[0] == '\0')
     {
         return;
+    
     }
-    if (strchr(trimmed_text, '/') != NULL)
+    if (trimmed_text[0] == '/') 
     {
         execution(trimmed_text, envp);
     }
     else
     {
-        checkCommandInPath(trimmed_text, envp);
+        checkCommandInPath(trimmed_text);
     }
 
 }

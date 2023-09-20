@@ -11,6 +11,7 @@
 #include<stdbool.h>
 #include <stdarg.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 
 /**
  * mjsh_main - header files and prototypes
@@ -22,5 +23,5 @@ void prompt(void);
 void instraction_reader(void);
 void execution(char *trimmed_text, char *envp[]);
 void tokenizeInput(char *input, char *args[], int *arg_count);
-void checkCommandInPath(char *trimmed_text, char *envp[]);
+void checkCommandInPath(char *command_line);
 #endif
