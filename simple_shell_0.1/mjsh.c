@@ -14,7 +14,7 @@ int main(void)
 for (;;)
 {
 prompt();
-instraction_reader();
+instruction_reader();
 }
 
 return (0);

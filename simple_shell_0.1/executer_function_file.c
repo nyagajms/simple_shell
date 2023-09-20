@@ -1,7 +1,8 @@
 #include"mjsh_main.h"
 /**
- * this is a function for executing a command
- * specified by 'triimmed_text' with the given enviromnent variables
+ * execution - this is a function for executing a command
+ * @trimmed_text: specified by 'triimmed_text'
+ * @envp: with the given enviromnent variables
  * it creats a child process using fork()
  * it checks if fork() failed to create a child process
  * code to be executed by the child process
