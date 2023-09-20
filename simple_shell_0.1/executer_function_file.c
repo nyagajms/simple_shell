@@ -1,5 +1,5 @@
 #include"mjsh_main.h"
-/**
+/** 
  * execution - this is a function for executing a command
  * @trimmed_text: specified by 'triimmed_text'
  * @envp: with the given enviromnent variables

@@ -1,7 +1,11 @@
 #include"mjsh_main.h"
 
-void exitShell() 
+/**
+ * exitShell - for exiting the shell on call
+*/
+
+void exitShell(void)
 {
-    _printf("Exiting the shell...\n");
-    exit(0);
+	_printf("Exiting the shell...\n");
+	exit(0);
 }

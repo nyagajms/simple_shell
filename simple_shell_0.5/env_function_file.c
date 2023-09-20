@@ -1,14 +1,16 @@
 #include"mjsh_main.h"
 
-void envShell() 
+/**
+ * envShell - environment printing
+*/
+
+void envShell(void)
 {
-    extern char** environ;
+	char **env = environ;
 
-    char **env = environ;
-
-    while (*env != NULL) 
-    {
-        _printf("%s\n", *env);
-        env++;
-    }
+	while (*env != NULL)
+	{
+		_printf("%s\n", *env);
+		env++;
+	}
 }
