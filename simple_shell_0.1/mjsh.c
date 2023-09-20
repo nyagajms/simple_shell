@@ -3,18 +3,19 @@
  * main - Entry point for the main shell program
  *
  * This function serves as the main entry point for the shell program
- * it runs an infinite loop that repeatedly prompts for user input and reads a progress instructions
+ * it runs an infinite loop that repeatedly prompts for user
+ * input and reads a progress instructions
  *
  * Return: Always 0 for sucess
 */
 
-int main (void)
+int main(void)
 {
-    for (;;)
-    {
-        prompt();
-        instraction_reader();
-    }
+for (;;)
+{
+prompt();
+instraction_reader();
+}
 
-    return (0);
+return (0);
 }
