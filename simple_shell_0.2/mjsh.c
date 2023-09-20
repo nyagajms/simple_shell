@@ -8,13 +8,13 @@
  * Return: Always 0 to indicate sucess
 */
 
-int main (void)
+int main(void)
 {
-    for (;;)
-    {
-        prompt();
-        instraction_reader();
-    }
+for (;;)
+{
+prompt();
+instraction_reader();
+}
 
-    return (0);
+return (0);
 }
