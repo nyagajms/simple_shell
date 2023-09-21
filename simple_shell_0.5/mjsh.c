@@ -1,17 +1,18 @@
 #include"mjsh_main.h"
+
 /**
  * main - main shell file
  * Return: 0
 */
 
-int main (void)
+int main(void)
 {
-    for (;;)
-    {
-        prompt();
-        instraction_reader();
-       
-    }
+	for (;;)
+	{
+		prompt();
+		instruction_reader();
 
-    return (0);
+	}
+
+	return (0);
 }
