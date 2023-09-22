@@ -16,6 +16,7 @@
 #include <sys/types.h>
 
 /* Function prototypes */
+void betty(void);
 
 /**
  * _printf - Custom printf function with variable arguments.

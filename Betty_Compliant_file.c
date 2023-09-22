@@ -1,9 +1,10 @@
+#include"mjsh_main.h"
 /**
  * main - betty standard
  * Return: 0
  */
 
-int main(void)
+void betty(void)
 {
-	return (0);
+	
 }
