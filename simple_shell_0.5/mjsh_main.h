@@ -16,7 +16,6 @@
 #include <sys/types.h>
 
 /* Function prototypes */
-void betty(void);
 
 /**
  * _printf - Custom printf function with variable arguments.
@@ -24,7 +23,7 @@ void betty(void);
  * @text: The format string.
  * @...: Additional arguments as needed by the format string.
 */
-void _printf(const char *text, ...);
+int _printf(const char *text, ...);
 
 /**
  * prompt - Display the shell prompt.

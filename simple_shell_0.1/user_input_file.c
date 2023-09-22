@@ -1,0 +1,49 @@
+#include"mjsh_main.h"
+
+/**
+ * instruction_reader - reades the user input command
+*/
+
+void instruction_reader(void)
+{
+	char text_command[100];
+	char *trimmed_text;
+	char *envp[1];
+	size_t text_length;
+
+	if (fgets(text_command, sizeof(text_command), stdin) == NULL)
+	{
+		perror("EXIT");
+		exit(1);
+	}
+	text_command[strcspn(text_command, "\n")] = '\0';
+
+	trimmed_text = text_command;
+
+	while (isspace(*trimmed_text))
+	{
+		trimmed_text++;
+	}
+
+	text_length = strlen(trimmed_text);
+
+	while (text_length > 0 && isspace(trimmed_text[text_length - 1]))
+	{
+		trimmed_text[--text_length] = '\0';
+	}
+
+	if (trimmed_text[0] == '\0')
+	{
+		return;
+	}
+
+
+	execution(trimmed_text, envp);
+}
+/**
+ * execution - Execute commands.
+ *
+ * @trimmed_text: The command to be executed.
+ * @envp: The environment variables.
+ */
+void execution(char *trimmed_text, char *envp[]);
