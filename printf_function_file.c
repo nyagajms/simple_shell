@@ -7,10 +7,5 @@
 
 int _printf(const char *text, ...) 
 {
-	int result;
-    va_list args;
-    va_start(args, text);
-    result = vprintf(text, args);
-    va_end(args);
-    return result;
+write(STDOUT_FILENO,text,strlen(text));
 }
