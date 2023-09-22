@@ -24,7 +24,7 @@ void betty(void);
  * @text: The format string.
  * @...: Additional arguments as needed by the format string.
 */
-int _printf(const char *text, ...);
+void _printf(const char *text, ...);
 
 /**
  * prompt - Display the shell prompt.
