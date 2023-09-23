@@ -14,8 +14,10 @@ void checkCommandInPath(char *trimmed_text, char *envp[]) {
     char *args[10];
     int arg_count;
 
+    
     char *command_name;
     char *command_path;
+    int i;
 
     tokenizeInput(trimmed_text, args, &arg_count);
 
@@ -24,8 +26,25 @@ void checkCommandInPath(char *trimmed_text, char *envp[]) {
         return;
     }
 
-    command_name = args[0]; 
+    for (i = 0; i < arg_count; i++) {
+        if (args[i][0] == '/') {
+            break;
+        }
+    }
 
+    if (i < arg_count) {
+        char *directory_path = args[i];
+        struct stat st;
+        if (stat(directory_path, &st) == 0 && S_ISDIR(st.st_mode)) {
+            args[arg_count] = NULL;
+            chdir(directory_path);
+        } else {
+            fprintf(stderr, "Error: Not a directory: %s\n", directory_path);
+            return;
+        }
+    }
+
+    command_name = args[0];
     command_path = findCommandInPath(command_name);
 
     if (command_path != NULL) {
@@ -49,6 +68,9 @@ void checkCommandInPath(char *trimmed_text, char *envp[]) {
         fprintf(stderr, "Command not found: %s\n", command_name);
     }
 }
+
+
+
 char *findCommandInPath(char *command_name) {
     char *path = getenv("PATH");
     char *dir;
