@@ -7,7 +7,7 @@
  */
 void tokenizeInput(char *trimmed_text, char *args[], int *arg_count) 
 {
-    
+     
     char *token;
     
     *arg_count = 0;

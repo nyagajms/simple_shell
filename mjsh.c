@@ -10,12 +10,14 @@
 
 int main (void)
 {
-    for (;;)
-    {
-        prompt();
-        instraction_reader();
+	int is_interactive = isatty(fileno(stdin));
+    	for (;;)
+    	{
+        	if (is_interactive)
+				prompt();
+        	instraction_reader();
         
-    }
+    	}
 
-    return (0);
+    	return (0);
 }

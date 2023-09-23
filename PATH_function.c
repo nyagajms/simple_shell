@@ -15,7 +15,7 @@ void checkCommandInPath(char *trimmed_text) {
     int arg_count;
 
     tokenizeInput(trimmed_text, args, &arg_count);
-
+ 
 
     if (args[0] != NULL) 
     {
