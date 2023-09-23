@@ -12,6 +12,7 @@
 #include <stdarg.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <errno.h>
 
 /**
  * mjsh_main - header files and prototypes
@@ -26,7 +27,7 @@ void instraction_reader(void);
 void execution(char *trimmed_text, char *envp[]);
 void tokenizeInput(char *input, char *args[], int *arg_count);
 void checkCommandInPath(char *command_line);
-void exitShell(void);
+void exitShell(int status_code);
 void envShell(void);
 
 #endif

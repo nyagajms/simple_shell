@@ -11,12 +11,14 @@
 
 void execution(char *trimmed_text, char *envp[]);
 void checkCommandInPath(char *command_line);
+void exitShell(int status_code);
 void instraction_reader(void)
 {
     char text_command[100];
     char *trimmed_text;
     char *envp[] = { NULL };
     size_t text_length;
+    int status_code = 0;
 
     if (fgets(text_command, sizeof(text_command), stdin) == NULL)
     {
@@ -30,7 +32,8 @@ void instraction_reader(void)
     
     if (strcmp(text_command, "exit") == 0)
     {
-        exitShell();
+        status_code = errno;
+        exitShell(status_code);
     }
     if (strcmp(text_command, "env") == 0) 
     {
