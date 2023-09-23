@@ -1,6 +1,5 @@
 #include "mjsh_main.h"
-#include <unistd.h>
-#include <stdlib.h>
+
 
 /**
  * checkCommandInPath - search for and execute a command in the system's PATH.
@@ -29,7 +28,7 @@ void checkCommandInPath(char *trimmed_text, char *envp[]) {
         }
 
         if (has_directory_path) {
-            char *directory_path = args[i];
+            char *directory_path = args[0]; 
             struct stat st;
             if (stat(directory_path, &st) == 0 && S_ISDIR(st.st_mode)) {
                 args[arg_count] = NULL;
