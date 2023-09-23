@@ -9,7 +9,7 @@
  * @text_command: the command being input
 */ 
 
-void execution(char *trimmed_text, char *envp[]);
+int execution(char *trimmed_text, char *envp[]);
 void checkCommandInPath(char *command_line);
 void exitShell(int status_code);
 void instraction_reader(void)
@@ -18,7 +18,7 @@ void instraction_reader(void)
     char *trimmed_text;
     char *envp[] = { NULL };
     size_t text_length;
-    int status_code = 0;
+    
 
     if (fgets(text_command, sizeof(text_command), stdin) == NULL)
     {
@@ -32,8 +32,7 @@ void instraction_reader(void)
     
     if (strcmp(text_command, "exit") == 0)
     {
-        status_code = errno;
-        exitShell(status_code);
+        exit(0);
     }
     if (strcmp(text_command, "env") == 0) 
     {
@@ -61,7 +60,9 @@ void instraction_reader(void)
     }
     if (trimmed_text[0] == '/') 
     {
-        execution(trimmed_text, envp);
+        int exit_status = execution(trimmed_text, envp);
+        
+        exit(exit_status);
     }
     else
     {
