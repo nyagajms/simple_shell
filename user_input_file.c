@@ -24,7 +24,7 @@ void instraction_reader(void)
         {
             perror("EXIT");
         }
-        exit(1);
+        exit(0);
     }
     text_command[strcspn(text_command, "\n")] = '\0';
     
