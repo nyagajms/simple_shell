@@ -36,7 +36,7 @@ void instraction_reader(void)
     ssize_t n; 
 
     while (1) {
-        printf("mjsh$ ");  
+        _printf("mjsh$ ");  
         n = getline(&line, &len, stdin); 
         if (n == -1) {
             if (isatty(STDIN_FILENO)) {
