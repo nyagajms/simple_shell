@@ -1,5 +1,4 @@
 #include"mjsh_main.h"
-
 /**
  * instraction_reader - reades and process the user input command
  * it trims leading and traling white spaces and handles cases of empty
@@ -8,13 +7,11 @@
  *
  * @text_command: the command being input
 */ 
-
 int execution(char *trimmed_text, char *envp[]);
 void checkCommandInPath(char *trimmed_text, char *envp[]);
 void exitShell(int status_code);
 void exitShell(int status_code);
 #include"mjsh_main.h"
-
 /**
  * instraction_reader - reades and process the user input command
  * it trims leading and traling white spaces and handles cases of empty
@@ -23,58 +20,62 @@ void exitShell(int status_code);
  *
  * @text_command: the command being input
 */ 
-
 int execution(char *trimmed_text, char *envp[]);
 void checkCommandInPath(char *trimmed_text, char *envp[]);
 void exitShell(int status_code);
 void exitShell(int status_code);
-void instraction_reader(void) {
+void instraction_reader(void)
+{
+    char text_command[100];
+    char *trimmed_text;
     char *envp[] = { NULL };
-    char *line = NULL;
-    size_t len = 0;
-    ssize_t n;
+    size_t text_length;
 
-    int is_interactive = isatty(STDIN_FILENO);
-    int is_piped = !is_interactive;
-
-    while (1) {
-        if (is_interactive) {
-            prompt();
+    if (fgets(text_command, sizeof(text_command), stdin) == NULL)
+    {
+        if (isatty(STDIN_FILENO))
+        {
+            perror("EXIT");
         }
+        exit(0);
+    }
+    text_command[strcspn(text_command, "\n")] = '\0';
 
-        n = getline(&line, &len, stdin);
-
-        if (n == -1) {
-            if (is_interactive) {
-                perror("EXIT");
-            }
-            exit(0);
-        }
-
-        line[strcspn(line, "\n")] = '\0';
-
-        if (strcmp(line, "exit") == 0) {
-            free(line);
-            exit(0);
-        }
-        if (strcmp(line, "env") == 0) {
-            envShell();
-        } else {
-            char *trimmed_text = line;
-            if (trimmed_text[0] == '/') {
-                int exit_status = execution(trimmed_text, envp);
-                if (is_interactive) {
-                    printf("Exit status: %d\n", exit_status);
-                }
-            } else {
-                checkCommandInPath(trimmed_text, envp);
-            }
-        }
-
-        if (!is_piped) {
-            break;
-        }
+    if (strcmp(text_command, "exit") == 0)
+    {
+        exit(0);
+    }
+    if (strcmp(text_command, "env") == 0)
+    {
+        envShell();
+        exitShell(0);
     }
 
-    free(line);
+    trimmed_text = text_command;
+
+    while (isspace(*trimmed_text))
+    {
+        trimmed_text++;
+    }
+
+    text_length = strlen(trimmed_text);
+
+    while (text_length > 0 && isspace(trimmed_text[text_length - 1]))
+    {
+        trimmed_text[--text_length] = '\0';
+    }
+
+    if (trimmed_text[0] == '\0')
+    {
+        return;
+    }
+    if (trimmed_text[0] == '/')
+    {
+        int exit_status = execution(trimmed_text, envp);
+        exitShell(exit_status);
+    }
+    else
+    {
+        checkCommandInPath(trimmed_text, envp);
+    }
 }
