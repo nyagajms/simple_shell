@@ -7,10 +7,7 @@ int main(void)
 
     for (;;)
     {
-        if (is_interactive)
-        {
-            prompt();
-        }
+ 
 
         instraction_reader();
 
