@@ -12,6 +12,7 @@
 int execution(char *trimmed_text, char *envp[]);
 void checkCommandInPath(char *command_line);
 void exitShell(int status_code);
+void exitShell(int status_code);
 void instraction_reader(void)
 {
     char text_command[100];
@@ -37,6 +38,7 @@ void instraction_reader(void)
     if (strcmp(text_command, "env") == 0) 
     {
         envShell();
+        exitShell(0);
     }
 
     trimmed_text = text_command;
