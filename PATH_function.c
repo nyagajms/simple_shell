@@ -1,4 +1,5 @@
 #include "mjsh_main.h"
+
 /**
  * checkCommandInPath - search for and execute a command in the system's PATH.
  * This function checks whether the given 'command_line' represents an absolute or relative
@@ -6,13 +7,15 @@
  * If not, it searches for the command in the listed directories in the PATH environment variables.
  * If a matching executable is found, it is executed as a child process.
  */
+
 void checkCommandInPath(char *trimmed_text) {
     pid_t child_pid;
+
     char *args[10];
     int arg_count;
 
     tokenizeInput(trimmed_text, args, &arg_count);
-
+ 
 
     if (args[0] != NULL) 
     {
@@ -29,7 +32,7 @@ void checkCommandInPath(char *trimmed_text) {
 
         if (has_directory_path) 
         {
-
+            
             char *directory_path = args[i];
             struct stat st;
             if (stat(directory_path, &st) == 0 && S_ISDIR(st.st_mode)) 
@@ -38,7 +41,7 @@ void checkCommandInPath(char *trimmed_text) {
                 chdir(directory_path);
             } else 
             {
-
+                
                 fprintf(stderr, "Error: Not a directory: %s\n", directory_path);
                 return;
             }
@@ -65,8 +68,6 @@ void checkCommandInPath(char *trimmed_text) {
             wait(NULL);
         }
     } else {
-
-
         perror("Command not found");
     }
 }
