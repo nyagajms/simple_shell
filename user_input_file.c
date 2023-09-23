@@ -10,7 +10,7 @@
 */ 
 
 int execution(char *trimmed_text, char *envp[]);
-void checkCommandInPath(char *command_line);
+void checkCommandInPath(char *trimmed_text, char *envp[]);
 void exitShell(int status_code);
 void exitShell(int status_code);
 void instraction_reader(void)
@@ -68,7 +68,7 @@ void instraction_reader(void)
     }
     else
     {
-        checkCommandInPath(trimmed_text);
+        checkCommandInPath(trimmed_text, envp);
     }
 
 }

@@ -26,7 +26,7 @@ void prompt(void);
 void instraction_reader(void);
 int execution(char *trimmed_text, char *envp[]);
 void tokenizeInput(char *input, char *args[], int *arg_count);
-void checkCommandInPath(char *command_line);
+void checkCommandInPath(char *trimmed_text, char *envp[]);
 void exitShell(int status_code);
 void envShell(void);
 
