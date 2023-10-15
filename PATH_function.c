@@ -8,47 +8,11 @@
  * If a matching executable is found, it is executed as a child process.
  */
 
-void checkCommandInPath(char *trimmed_text, char *envp[]) {
-    pid_t child_pid;
-
-    char *args[10];
-    int arg_count;
-
-    
-    char *command_name;
-    char *command_path;
-    int i;
-
-    tokenizeInput(trimmed_text, args, &arg_count);
-
-    if (arg_count == 0) {
-        fprintf(stderr, "Error: Empty command.\n");
-        return;
-    }
-
-    for (i = 0; i < arg_count; i++) {
-        if (args[i][0] == '/') {
-            break;
-        }
-    }
-
-    if (i < arg_count) {
-        char *directory_path = args[i];
-        struct stat st;
-        if (stat(directory_path, &st) == 0 && S_ISDIR(st.st_mode)) {
-            args[arg_count] = NULL;
-            chdir(directory_path);
-        } else {
-            fprintf(stderr, "Error: Not a directory: %s\n", directory_path);
-            return;
-        }
-    }
-
-    command_name = args[0];
-    command_path = findCommandInPath(command_name);
+void checkCommandInPath(char *trimmed_text) {
+    char *command_path = findCommandInPath(trimmed_text);
 
     if (command_path != NULL) {
-        child_pid = fork();
+        pid_t child_pid = fork();
 
         if (child_pid == -1) {
             perror("Child process failed to be created");
@@ -56,20 +20,28 @@ void checkCommandInPath(char *trimmed_text, char *envp[]) {
         }
 
         if (child_pid == 0) {
-            if (execve(command_path, args, envp) == -1) {
-                perror("execve");
+            char *args[10];
+            int arg_count;
+
+            tokenizeInput(trimmed_text, args, &arg_count);
+
+            if (execv(command_path, args) == -1) {
+                perror("Execution failed");
                 exit(1);
             }
-            exit(0);
         } else {
-            wait(NULL);
+            int status;
+            wait(&status);
+            if (WIFEXITED(status)) {
+               
+            } else {
+                perror("Child process did not exit normally");
+            }
         }
     } else {
-        fprintf(stderr, "Command not found: %s\n", command_name);
+        fprintf(stderr, "Command not found: %s\n", trimmed_text);
     }
 }
-
-
 
 char *findCommandInPath(char *command_name) {
     char *path = getenv("PATH");
