@@ -9,30 +9,39 @@
  * @envp: the array of environment variables to pass to the executed command.
  * Return: 0 on success, -1 on failure.
  */
-int execution(char *trimmed_text) {
+int execution(char *trimmed_text, char *envp[])
+{
     pid_t child_pid = fork();
 
-    if (child_pid == -1) {
+    if (child_pid == -1)
+    {
         perror("Child process failed to be created");
         exit(1);
     }
 
-    if (child_pid == 0) {
+    if (child_pid == 0)
+    {
         char *args[10];
         int arg_count;
 
         tokenizeInput(trimmed_text, args, &arg_count);
 
-        if (execvp(args[0], args) == -1) {
+        if (execve(args[0], args, envp) == -1)
+        {
             perror("Execution failed");
             exit(1);
         }
-    } else {
+    }
+    else
+    {
         int status;
         wait(&status);
-        if (WIFEXITED(status)) {
+        if (WIFEXITED(status))
+        {
             return WEXITSTATUS(status);
-        } else {
+        }
+        else
+        {
             perror("Child process did not exit normally");
             return -1;
         }
