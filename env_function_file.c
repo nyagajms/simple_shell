@@ -7,12 +7,12 @@
 
 void envShell(void)
 {
-    extern char **environ;
-    char **env = environ;
-    int i; 
+	extern char **environ;
+	char **env = environ;
+	int i;
 
-    for (i = 0; env[i] != NULL; i++) 
-    {
-        _printf("%s\n", env[i]);
-    }
+	for (i = 0; env[i] != NULL; i++)
+	{
+		_printf("%s\n", env[i]);
+	}
 }
