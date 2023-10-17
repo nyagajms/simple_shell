@@ -1,10 +1,9 @@
-#include"mjsh_main.h"
+#include "mjsh_main.h"
+
 
 /**
- * main - betty
+ * betty - Entry point of the program
  */
-
-void main(void)
+void betty(void)
 {
 }
-

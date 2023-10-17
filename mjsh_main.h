@@ -19,7 +19,7 @@
  * @text: The text to be printed
 */
 
-
+void betty(void);
 char *findCommandInPath(char *command_name);
 int _printf(const char *text, ...);
 void prompt(void);
