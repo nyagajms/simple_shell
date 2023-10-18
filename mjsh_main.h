@@ -16,7 +16,6 @@
 
 /**
  * mjsh_main - header files and prototypes
- * @text: The text to be printed
 */
 
 void betty(void);
