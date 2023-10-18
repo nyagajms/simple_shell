@@ -8,16 +8,16 @@
  * Return: Always 0 to indicate sucess
 */
 
-int main (void)
+int main(void)
 {
 	int is_interactive = isatty(fileno(stdin));
-    	for (;;)
-    	{
-        	if (is_interactive)
-				prompt();
-        	instraction_reader();
 
-    	}
+	for (;;)
+	{
+		if (is_interactive)
+			prompt();
+		instraction_reader();
+	}
 
-    	return (0);
+	return (0);
 }
