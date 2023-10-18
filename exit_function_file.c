@@ -6,5 +6,5 @@
  */
 void exitShell(int status_code)
 {
-    exit(status_code);
+	exit(status_code);
 }
